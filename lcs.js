@@ -1,9 +1,12 @@
+// https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+
 const lcs = (foo, bar) => {
 
     const generate2DArray = (x, y) => {
         let lenOfX = x.length, lenOfY = y.length
         let arr = []
 
+        // init 2d-array arr
         for(let i=0; i<lenOfX; i++){
             arr[i] = []
             for(let j=0; j<lenOfY; j++){
@@ -11,6 +14,7 @@ const lcs = (foo, bar) => {
             }
         }
 
+        // rebuild arr with dynamic programming
         for(let i=1; i<lenOfX; i++){
             for(let j=1; j<lenOfY; j++){
                 arr[i][j] =
@@ -20,9 +24,11 @@ const lcs = (foo, bar) => {
             }
         }
 
+        // the biggest number is the length of LCS
         return arr
     }
 
+    // collect LCS with traceback approach
     const logLcs = (arr, x, y) => {
         let tempArr = []
         let i = x.length-1, j = y.length-1;
